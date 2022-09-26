@@ -1,0 +1,123 @@
+// iOS Reset 
+input {
+  appearance: none;
+  border-radius: 0;
+  color: inherit;
+}
+
+.input-field {
+  border: 0;
+  z-index: 1;
+  background-color: transparent;
+  border-bottom: 2px solid $primary;
+  font: inherit;
+  font-size: 1.125rem;
+  padding: .25rem 0;
+  color: $primary;
+
+  & option {
+    background-color: $secondary;
+  }
+
+  &.notEmptyInput,
+  &.notEmptyInput :focus {
+    color: $primary;
+    outline: 0;
+    border-bottom-color: $accent2;
+
+    &+.input-label {
+      color: $accent2;
+      transform: translateY(-1.5rem);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.input-label {
+  color: inherit;
+  position: absolute;
+  top: 1.5rem;
+  transition: .25s ease;
+}
+
+.input {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1.5rem;
+
+  &+.input {
+    margin-top: 1rem;
+  }
+
+  &:has(div) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+  }
+
+  & .dateTime label {
+    display: none;
+  }
+
+  & .dateTime input {
+    cursor: pointer;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(80%) sepia(100%);
+  }
+
+  & div {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+
+    & label.input-label {
+      position: static;
+      margin-right: 1rem;
+    }
+
+    & span.error {
+      top: -60%;
+    }
+  }
+}
+
+span.error {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: $accent;
+}
+
+input:-internal-autofill-selected,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px lighten($secondary, 0%) inset;
+  box-shadow: 0 0 0px 1000px lighten($secondary, 0%) inset;
+  color: $primary  !important;
+  border-bottom: 2px solid $primary;
+  -webkit-text-fill-color: $primary;
+}
+
+input[type="password"] {
+  position: relative;
+}
+
+button[type="submit"] {
+  margin-top: 1em;
+  color: $accent2;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: lighten($secondary, 5%);
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($accent3, 10%);
+  }
+}

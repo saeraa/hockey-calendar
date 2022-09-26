@@ -1,0 +1,24 @@
+{
+	"name": "220914-calendar",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@vee-validate/rules": "^4.6.7",
+		"firebase": "^9.10.0",
+		"pinia": "^2.0.22",
+		"sass": "^1.54.9",
+		"vee-validate": "^4.6.7",
+		"vue": "^3.2.37",
+		"vue-cal": "^4.8.0"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^3.1.0",
+		"vite": "^3.1.0"
+	}
+}

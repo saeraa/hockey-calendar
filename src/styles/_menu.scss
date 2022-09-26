@@ -1,0 +1,96 @@
+.container {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: +5;
+}
+
+.menu-toggle {
+
+  & :hover {
+    color: darken($primary, 10%);
+  }
+
+  cursor: pointer;
+
+  width: 55px;
+  height: 55px;
+
+  background-color: darken($accent, 20%);
+  box-shadow: 2px 2px 2px 1px rgba(#000, 0.2);
+
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  right: 0;
+  display: table;
+
+  text-align: center;
+
+  .fa {
+
+    // color: #fff;
+    font-size: 2em;
+    display: table-cell;
+    vertical-align: middle;
+    transition: 0.4s;
+  }
+
+  &.open .fa {
+    transform: rotate(180deg);
+  }
+}
+
+.btn-app {
+  cursor: pointer;
+  z-index: 0;
+  min-width: 150px;
+  position: absolute;
+  padding: .2em .7em;
+
+  background-color: $accent3;
+  color: #fff;
+  text-align: center;
+
+  .fa {
+    line-height: 3em;
+  }
+
+}
+
+.btn-app:hover {
+  background-color: darken($accent3, 5%);
+}
+
+.open .btn-app {
+  box-shadow: 2px 2px 2px 1px rgba(#000, 0.2);
+}
+
+.menu-line {
+  position: absolute;
+  z-index: 100100;
+
+  .btn-app {
+    bottom: -60px;
+    right: 0em;
+    transition: 0.3s;
+    transition-delay: 0.2s;
+  }
+
+  &.open {
+    $bottom: 1.95em;
+    $templates: 3;
+
+    .btn-app:nth-of-type(1) {
+      bottom: $bottom;
+    }
+
+    // align each template item on top of the next
+    @for $i from 1 through $templates {
+      .btn-app:nth-of-type(#{$i}) {
+        bottom: $bottom + 2.5 * $i;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,77 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 2rem 2rem 2rem;
+  gap: 1em;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  top: 2rem;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+  width: 450px;
+  z-index: +3;
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  position: absolute;
+  width: 450px;
+
+  & h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  & i.fas.fa-times {
+    cursor: pointer;
+    font-size: 2rem;
+    color: $accent;
+  }
+
+  & form {
+    margin: auto;
+  }
+
+  & div.login-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 2em 1em 2em;
+  }
+
+  & div.login-top:last-of-type {
+    padding-bottom: 2em;
+  }
+
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: contents;
+
+    & li a {
+      padding: .5em 2.5em;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 4px;
+      background-color: rgba(lighten($secondary, 10%), .9);
+
+      &:hover {
+        background-color: rgba(lighten($secondary, 20%), .9);
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.eye-icon {
+  cursor: pointer;
+  position: absolute;
+  right: .5em;
+  top: 2em;
+  z-index: 100;
+  color: $accent-light;
+}

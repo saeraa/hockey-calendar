@@ -1,0 +1,54 @@
+.day {
+  max-width: 500px;
+  padding: 1em;
+
+  & h2 {
+    margin-left: 2em;
+    color: lighten($accent2, 10%);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+.game {
+  padding-left: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5em;
+  font-weight: 700;
+
+  & .time {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0;
+    margin: .5em 0;
+  }
+
+  & .vs {
+    color: lighten($accent2, 10%);
+  }
+
+  & .league {
+    text-transform: uppercase;
+    color: darken($accent, 5%);
+
+    &:before {
+      content: "[";
+      margin: 5px;
+    }
+
+    &:after {
+      margin: 5px;
+      content: "]";
+    }
+  }
+
+
+  & .team {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+}
