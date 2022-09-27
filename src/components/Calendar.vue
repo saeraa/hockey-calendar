@@ -30,11 +30,13 @@
 
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
-import useGameStore from "../stores/game"
+import useGameStore from "@/stores/game"
+import useTeamStore from "@/stores/team";
 
 export default {
   data() {
     return {
+      teams: [],
       events: [
         // {
         //   // You can also define event dates with Javascript Date objects:
@@ -91,7 +93,8 @@ export default {
   },
   setup() {
     const gameStore = useGameStore()
-    return { gameStore }
+    const teamStore = useTeamStore()
+    return { gameStore, teamStore }
   },
   name: "Calendar",
   components: { VueCal },
@@ -100,17 +103,23 @@ export default {
       return events ? events.filter(e => e.class === team).length : 0
     },
     onEventClick(event) {
-      console.log("event selected ", event)
+      // console.log("event selected ", event)
     },
     logEvents(click, $event) {
-      console.log($event)
+      // console.log($event)
     }
   },
+  created: async function () {
+    const teams = await this.teamStore.getTeams()
+    teams.forEach(team => {
+      this.teams.push(team)
+    })
+  },
   async beforeMount() {
-    console.log(this.gameStore.games)
+    // console.log(this.gameStore.games)
 
     const games = await this.gameStore.getAllGames()
-    console.log("events ", this.events)
+    // console.log("events ", this.events)
 
     games.forEach(game => {
       this.events.push({

@@ -19,28 +19,30 @@
 </template>
 
 <script>
-import useGameStore from "../stores/game"
+import useGameStore from "@/stores/game"
+import useTeamStore from "@/stores/team"
 import { mapState } from "pinia"
 
 export default {
   setup() {
     const gameStore = useGameStore()
+    const teamStore = useTeamStore()
     const games = []
-    return { gameStore, getGameByDate: gameStore.getGameByDate, games }
+    return { gameStore, getGameByDate: gameStore.getGameByDate, games, teamStore }
   },
   name: "SelectedDay",
   data() {
     return {
-      gamesToday: []
+
     }
   },
   props: {
     day: Date
   },
   methods: {
-    // async getGamesByDate() {
-    //   // this.gameStore.getGamesByDate(this.formattedDate)
-    // }
+    async getGamesByDate() {
+      console.log(this.teamStore.teams)
+    }
   },
   created() {
     const today = this.formattedDate
