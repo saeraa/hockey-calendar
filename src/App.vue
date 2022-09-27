@@ -1,5 +1,7 @@
 <template>
 
+  <Logo />
+
   <Menu @addNewTeam="addNewTeam" @addNewGame="addNewGame" @toggleAuth="toggleAuthModal" />
 
   <!-- <li>
@@ -28,9 +30,14 @@
     </div>
 
   </main>
+
+  <div class="legend">
+    HA - HockeyAllsvenskan, SHL - Swedish Hockey League, CHL - Champions Hockey League
+  </div>
 </template>
 
 <script>
+import Logo from "./components/Logo.vue"
 import Menu from "./components/Menu.vue"
 import AddTeamForm from "./components/AddTeamForm.vue"
 import SelectedDay from "./components/SelectedDay.vue"
@@ -52,6 +59,7 @@ export default {
     }
   },
   components: {
+    Logo,
     Menu,
     Calendar,
     AppAuth,

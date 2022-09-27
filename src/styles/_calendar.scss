@@ -19,16 +19,19 @@
 }
 
 .vuecal__title-bar {
+  font-family: "Advent Pro";
   font-weight: 700;
-  letter-spacing: .4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: $accent-light;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .vuecal__flex {
   & .weekday-label {
-    font-size: 1em;
-    color: $accent-light;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    color: darken($accent-light, 5%);
     font-weight: 700;
 
   }

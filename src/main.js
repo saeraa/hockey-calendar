@@ -40,3 +40,20 @@ auth.onAuthStateChanged(() => {
 
 // TODO: Full week events?
 
+/* 
+PuckTime
+hockeyview
+teamtime
+on the ice
+
+rinkio
+slapshot
+
+chillout
+
+
+Faster One Regular.
+Advent Pro Medium
+
+
+*/

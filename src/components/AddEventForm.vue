@@ -147,7 +147,7 @@ export default {
       this.addEvent_show_alert = true;
       this.addEvent_in_submission = true;
       this.addEvent_alert_variant = "bg-blue-500 dark:bg-blue-700";
-      this.addEvent_alert_msg = "Please wait! Submitting team information ..";
+      this.addEvent_alert_msg = "Please wait! Submitting game information ..";
 
       try {
         await this.gameStore.addGame(values)
@@ -161,7 +161,7 @@ export default {
       }
 
       this.addEvent_alert_variant = "bg-green-500 dark:bg-green-700";
-      this.addEvent_alert_msg = "Success! Team added to database.";
+      this.addEvent_alert_msg = "Success! Game added to database.";
 
       this.addEvent_in_submission = true
       resetForm();
