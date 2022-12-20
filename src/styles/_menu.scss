@@ -6,7 +6,6 @@
 }
 
 .menu-toggle {
-
   & :hover {
     color: darken($primary, 10%);
   }
@@ -28,7 +27,6 @@
   text-align: center;
 
   .fa {
-
     // color: #fff;
     font-size: 2em;
     display: table-cell;
@@ -46,7 +44,7 @@
   z-index: 0;
   min-width: 150px;
   position: absolute;
-  padding: .2em .7em;
+  padding: 0.2em 0.7em;
 
   background-color: $accent3;
   color: #fff;
@@ -55,7 +53,6 @@
   .fa {
     line-height: 3em;
   }
-
 }
 
 .btn-app:hover {
@@ -92,5 +89,4 @@
       }
     }
   }
-
 }

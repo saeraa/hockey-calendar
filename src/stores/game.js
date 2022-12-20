@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
-import { auth, gamesCollection, db } from "@/includes/firebase"
+import { auth, gamesCollection, db } from "@/includes/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
-
 
 export default defineStore("game", {
   state: () => ({
@@ -9,13 +8,11 @@ export default defineStore("game", {
   }),
   getters: {
     getGameByDate: (state) => {
-      return (date) => state.games.filter((game) => game.date === date)
+      return (date) => state.games.filter((game) => game.date === date);
     },
   },
   actions: {
-
     async addGame(values) {
-
       // Add a new document with a generated id.
       const docRef = await addDoc(collection(db, "games"), {
         date: values.date,
@@ -23,17 +20,14 @@ export default defineStore("game", {
         nameAway: values.nameAway,
         nameHome: values.nameHome,
         time: values.time,
-
       });
       console.log("Document written with ID: ", docRef.id);
-
 
       // date:"2022-09-24"
       // league:"eer"
       // nameAway:"dgh"
       // nameHome:"gdf"
       // time:"00:49"
-
 
       // do something
       // TODO Game Schema: String Name, String Short name, String League, String City
@@ -43,19 +37,18 @@ export default defineStore("game", {
       // TODO Game update
     },
     async getAllGames() {
-      this.$reset()
+      this.$reset();
       this.games = new Array();
       this.games.pop();
       const querySnapshot = await getDocs(collection(db, "games"));
       querySnapshot.forEach((doc) => {
-        this.games.push(doc.data())
+        this.games.push(doc.data());
       });
 
-      return this.games
+      return this.games;
     },
 
     async getGamesByDate(date) {
-
       const q = query(collection(db, "games"), where("date", "==", date));
 
       const querySnapshot = await getDocs(q);
@@ -63,10 +56,6 @@ export default defineStore("game", {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
       });
-
-
     },
-
-
   },
-})
+});

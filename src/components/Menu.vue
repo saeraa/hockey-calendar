@@ -1,36 +1,45 @@
 <template>
-
   <div class="container">
-    <div class="menu-toggle" v-on:click="toggleMenu" :class="{'open': openMenu}">
-      <span class="fa fas" :class="{'fa-xmark fa-solid': openMenu, 'fa-bars': !openMenu}"></span>
+    <div
+      class="menu-toggle"
+      v-on:click="toggleMenu"
+      :class="{ open: openMenu }"
+    >
+      <span
+        class="fa fas"
+        :class="{ 'fa-xmark fa-solid': openMenu, 'fa-bars': !openMenu }"
+      ></span>
     </div>
-    <div class="menu-line" :class="{'open': openMenu}">
+    <div class="menu-line" :class="{ open: openMenu }">
       <div class="btn-app" @click.prevent="toggleMenu">
         <div class="" @click.prevent="$emit('toggleAuth', $event)">
-          Login / Register</div>
+          Login / Register
+        </div>
       </div>
       <div class="btn-app" @click.prevent="toggleMenu">
         <div class="" @click.prevent="$emit('addNewTeam', $event)">
-          Add New Team</div>
+          Add New Team
+        </div>
       </div>
       <div class="btn-app" @click.prevent="toggleMenu">
         <div class="" @click.prevent="$emit('addNewGame', $event)">
-          Add New Game</div>
+          Add New Game
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import useUserStore from "@/stores/user"
+import useUserStore from "@/stores/user";
 import useModalStore from "@/stores/modal";
-import { mapWritableState, mapStores } from "pinia"
+import { mapWritableState, mapStores } from "pinia";
 
 export default {
   data() {
     return {
-      openMenu: false
-    }
+      openMenu: false,
+    };
   },
   computed: {
     ...mapWritableState(useUserStore, ["userLoggedIn"]),
@@ -43,7 +52,6 @@ export default {
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen;
     },
-  }
-}
-
+  },
+};
 </script>

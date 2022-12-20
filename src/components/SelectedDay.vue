@@ -1,77 +1,85 @@
 <template>
-
-  <h2 @click.prevent="getGamesByDate(date)">{{date}}</h2>
+  <h2 @click.prevent="getGamesByDate(date)">{{ date }}</h2>
 
   <div v-if="this.games.length > 0">
-
     <div v-for="(value, name, index) in games" :key="index" class="game">
       <h3 class="time">{{ value.time }}</h3>
       <span class="league">{{ value.league }}</span>
       <span class="team">{{ value.nameHome }}</span>
       <span class="vs">vs</span>
-      <span class="team">{{ value.nameAway}}</span>
+      <span class="team">{{ value.nameAway }}</span>
     </div>
-
   </div>
 
   <div v-else class="game">Sorry, no games on this date. 😢</div>
-
 </template>
 
 <script>
-import useGameStore from "@/stores/game"
-import useTeamStore from "@/stores/team"
-import { mapState } from "pinia"
+import useGameStore from "@/stores/game";
+import useTeamStore from "@/stores/team";
+import { mapState } from "pinia";
 
 export default {
   setup() {
-    const gameStore = useGameStore()
-    const teamStore = useTeamStore()
-    const games = []
-    return { gameStore, getGameByDate: gameStore.getGameByDate, games, teamStore }
+    const gameStore = useGameStore();
+    const teamStore = useTeamStore();
+    const games = [];
+    return {
+      gameStore,
+      getGameByDate: gameStore.getGameByDate,
+      games,
+      teamStore,
+    };
   },
   name: "SelectedDay",
   data() {
-    return {
-
-    }
+    return {};
   },
   props: {
-    day: Date
+    day: Date,
   },
   methods: {
     async getGamesByDate() {
-      console.log(this.teamStore.teams)
-    }
+      console.log(this.teamStore.teams);
+    },
   },
   created() {
-    const today = this.formattedDate
-    const games = this.gameStore.getGameByDate(today)
-    games.forEach(game => this.games.push({
-      nameHome: game.nameHome,
-      nameAway: game.nameAway,
-      league: game.league,
-      time: game.time,
-      date: game.date
-    }))
+    const today = this.formattedDate;
+    const games = this.gameStore.getGameByDate(today);
+    games.forEach((game) =>
+      this.games.push({
+        nameHome: game.nameHome,
+        nameAway: game.nameAway,
+        league: game.league,
+        time: game.time,
+        date: game.date,
+      })
+    );
   },
   beforeUpdate() {
-    this.games = []
-    const today = this.formattedDate
-    const games = this.gameStore.getGameByDate(today)
-    games.forEach(game => this.games.push({
-      nameHome: game.nameHome,
-      nameAway: game.nameAway,
-      league: game.league,
-      time: game.time,
-      date: game.date
-    }))
+    this.games = [];
+    const today = this.formattedDate;
+    const games = this.gameStore.getGameByDate(today);
+    games.forEach((game) =>
+      this.games.push({
+        nameHome: game.nameHome,
+        nameAway: game.nameAway,
+        league: game.league,
+        time: game.time,
+        date: game.date,
+      })
+    );
   },
   computed: {
     ...mapState(useGameStore, ["games"]),
     date() {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      return this.day.toLocaleDateString('en-GB', options);
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return this.day.toLocaleDateString("en-GB", options);
     },
     formattedDate() {
       let day = this.day.getDate();
@@ -81,9 +89,8 @@ export default {
       if (day < 10) day = "0" + day;
 
       let format = year + "-" + month + "-" + day;
-      return format
-
-    }
-  }
-}
+      return format;
+    },
+  },
+};
 </script>

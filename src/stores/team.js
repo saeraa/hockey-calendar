@@ -1,13 +1,12 @@
 import { defineStore } from "pinia";
-import { db, teamsCollection } from "@/includes/firebase"
+import { db, teamsCollection } from "@/includes/firebase";
 import { collection, setDoc, addDoc, getDocs, doc } from "firebase/firestore";
 
 export default defineStore("team", {
   state: () => ({
-    teams: []
+    teams: [],
   }),
   actions: {
-
     async getTeams() {
       // console.log("get teams")
       const querySnapshot = await getDocs(collection(db, "teams"));
@@ -16,13 +15,13 @@ export default defineStore("team", {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         // console.log(doc.data().name)
-        const teamAlreadyExists = this.teams.find(team => team.name === doc.data().name)
-        if (teamAlreadyExists) return
-        else this.teams.push({ ...doc.data(), abbr: doc.id })
-
+        const teamAlreadyExists = this.teams.find(
+          (team) => team.name === doc.data().name
+        );
+        if (teamAlreadyExists) return;
+        else this.teams.push({ ...doc.data(), abbr: doc.id });
       });
-      return this.teams
-
+      return this.teams;
 
       // const docRef = doc(db, "teams");
       // const docSnap = await getDocs(docRef);
@@ -37,11 +36,13 @@ export default defineStore("team", {
 
     async addTeam(values) {
       // test this instead
-      db.collection("teams").doc(values.name).set({
-        name: values.nameLong,
-        city: values.city,
-        league: values.league
-      })
+      db.collection("teams")
+        .doc(values.name)
+        .set({
+          name: values.nameLong,
+          city: values.city,
+          league: values.league,
+        })
         .then(() => {
           console.log("Document successfully written!");
         })
@@ -64,8 +65,5 @@ export default defineStore("team", {
       //   country: values.country
       // })
     },
-
-
-
   },
-})
+});

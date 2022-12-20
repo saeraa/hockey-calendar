@@ -4,7 +4,7 @@
   max-height: 450px;
   max-width: 500px;
   min-width: 450px;
-  background: rgba(0, 0, 0, 0.00);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(5px);
 }
 
@@ -33,7 +33,6 @@
     text-transform: uppercase;
     color: darken($accent-light, 5%);
     font-weight: 700;
-
   }
 
   & span.full {
@@ -47,7 +46,7 @@
 
 .vuecal__cell--today,
 .vuecal__cell--current {
-  background-color: $accent3  !important;
+  background-color: $accent3 !important;
   box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -56,11 +55,11 @@
 }
 
 .vuecal__arrow i.angle {
-  border-color: $primary  !important;
+  border-color: $primary !important;
 }
 
 i.fa:before {
-  color: $accent2  !important;
+  color: $accent2 !important;
 }
 
 .vuecal__cell--selected:before {
@@ -79,7 +78,6 @@ i.fa:before {
 }
 
 .vuecal__cell--out-of-scope {
-
   & .vuecal__cell-date {
     color: $accent2;
   }
@@ -178,7 +176,6 @@ i.fa:before {
 //   padding: 0 !important;
 //   color: transparent !important;
 // }
-
 
 /* different classes */
 .vuecal__event.shl {
