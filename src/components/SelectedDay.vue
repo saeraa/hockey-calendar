@@ -4,10 +4,25 @@
 	<div v-if="this.games.length > 0">
 		<div v-for="(value, name, index) in games" :key="index" class="game">
 			<h3 class="time">{{ value.time }}</h3>
-			<span class="league">{{ value.league }}</span>
-			<span class="team">{{ value.nameHome }}</span>
+			<span class="league">
+				<img
+					class="league-logo"
+					:src="logos[value.league.toLowerCase()]"
+					alt=""
+			/></span>
+			<img
+				class="team-logo"
+				:src="logos[value.nameHome.toLowerCase()]"
+				alt=""
+			/>
+			<span class="team">{{ teams[value.nameHome.toLowerCase()] }}</span>
 			<span class="vs">vs</span>
-			<span class="team">{{ value.nameAway }}</span>
+			<span class="team"> {{ teams[value.nameAway.toLowerCase()] }}</span>
+			<img
+				class="team-logo"
+				:src="logos[value.nameAway.toLowerCase()]"
+				alt=""
+			/>
 		</div>
 	</div>
 
@@ -15,6 +30,8 @@
 </template>
 
 <script>
+import { logos } from "@/includes/logos.js";
+import { teams } from "@/includes/teams.js";
 import useGameStore from "@/stores/game";
 import useTeamStore from "@/stores/team";
 import { mapState } from "pinia";
@@ -25,6 +42,8 @@ export default {
 		const teamStore = useTeamStore();
 		const games = [];
 		return {
+			teams,
+			logos,
 			gameStore,
 			getGameByDate: gameStore.getGameByDate,
 			games,
@@ -48,8 +67,8 @@ export default {
 		const games = this.gameStore.getGameByDate(today);
 		games.forEach((game) =>
 			this.games.push({
-				nameHome: game.nameHome,
-				nameAway: game.nameAway,
+				nameHome: game.nameHome.trim(),
+				nameAway: game.nameAway.trim(),
 				league: game.league,
 				time: game.time,
 				date: game.date
@@ -59,6 +78,7 @@ export default {
 			a.time.localeCompare(b.time)
 		);
 		this.games = gamesArray;
+		console.log(gamesArray);
 	},
 	beforeUpdate() {
 		this.games = [];
@@ -66,8 +86,8 @@ export default {
 		const games = this.gameStore.getGameByDate(today);
 		games.forEach((game) =>
 			this.games.push({
-				nameHome: game.nameHome,
-				nameAway: game.nameAway,
+				nameHome: game.nameHome.trim(),
+				nameAway: game.nameAway.trim(),
 				league: game.league,
 				time: game.time,
 				date: game.date
