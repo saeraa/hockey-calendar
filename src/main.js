@@ -1,22 +1,22 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
-import "./styles/index.scss";
-import VeeValidatePlugin from "./includes/validation";
-import { auth } from "./includes/firebase";
-import App from "./App.vue";
+import "@/styles/index.scss";
+import VeeValidatePlugin from "@/includes/validation";
+import { auth } from "@/includes/firebase";
+import App from "@/App.vue";
 
 // createApp(App).mount('#app')
 
 let app;
 
 auth.onAuthStateChanged(() => {
-  if (!app) {
-    app = createApp(App);
-    app.use(createPinia());
-    app.use(VeeValidatePlugin);
-    app.mount("#app");
-  }
+	if (!app) {
+		app = createApp(App);
+		app.use(createPinia());
+		app.use(VeeValidatePlugin);
+		app.mount("#app");
+	}
 });
 
 // // TODO: CSS: Arrange

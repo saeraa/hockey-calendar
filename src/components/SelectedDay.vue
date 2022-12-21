@@ -26,7 +26,7 @@
 		</div>
 	</div>
 
-	<div v-else class="game">Sorry, no games on this date. 😢</div>
+	<div v-else class="no-game">Sorry, no games on this date. 😢</div>
 </template>
 
 <script>
